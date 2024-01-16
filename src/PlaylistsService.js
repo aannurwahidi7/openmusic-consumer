@@ -21,9 +21,9 @@ class PlaylistsService {
       values: [playlistId],
     };
 
-    const playlist = await this._pool.query(queryPlaylist).rows[0];
-    const songs = await this._pool.query(querySongs).rows;
+    const playlist = (await this._pool.query(queryPlaylist)).rows[0];
 
+    const songs = (await this._pool.query(querySongs)).rows;
     playlist.songs = songs;
 
     return playlist;
